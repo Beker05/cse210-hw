@@ -1,0 +1,49 @@
+Explain the meaning of Encapsulation.
+Highlight a benefit of Encapsulation.
+Provide an application of Encapsulation.
+Use a code example of Encapsulation from the program you wrote. 
+(You should copy and paste a few lines of code that demonstrate the use of the principle.)
+Thoroughly explain these concepts. (This likely cannot be done in less than 100 words.)
+------------------------------------------------------------------------------------------------------------
+Encapsulation is a fundamental principle of programming and is used for objects that involves grouping 
+the data (I mean variables) and the methods (functions) that operate on the data into a single 
+unit, called a class. The cool thing about this is that behind encapsulation is to restrict direct 
+access to some of the components of an object, which helps to avoid unwanted interference and misuse 
+of the data. Instead, the class provides public methods that are either accessor methods or setter 
+or getter methods to safely interact with the private data.
+
+A key benefit of encapsulation is that it helps protect the internal state of an object, and that makes 
+the object's data only modified in a controlled manner. This makes the code easier to maintain, reduces 
+bugs, and improves security by hiding implementation details.
+
+In my program, the Word class demonstrates encapsulation well. The Text property is private, so it can 
+only be accessed and modified through the Word class's methods. Here's an example:
+
+      public class Word
+      {
+          public string Text { get; private set; }
+          public bool IsHidden { get; private set; }
+
+          public Word(string text)
+          {
+              Text = text;
+              IsHidden = false;
+          }
+
+          public void Hide()
+          {
+              IsHidden = true;
+          }
+
+          public string GetDisplayText()
+          {
+              return IsHidden ? new string('_', Text.Length) : Text;
+          }
+      }
+
+In this example, the Text property is read-only outside the class. The Hide method allows the IsHidden 
+state to be modified, but it is the class itself that controls how the state changes. This protects the 
+internal state of the Word object and ensures that the IsHidden flag is only updated by the appropriate 
+method. This encapsulation simplifies debugging, makes the code safer, and ensures that the data is used 
+correctly throughout the program.
+------------------------------------------------------------------------------------------------------------
