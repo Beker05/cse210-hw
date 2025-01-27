@@ -1,0 +1,47 @@
+Your response must:
+.Explain the meaning of Abstraction.
+.Highlight a benefit of Abstraction.
+.Provide an application of Abstraction.
+.Use a code example of Abstraction from the program you wrote. (You should copy and paste a 
+.few lines of code that demonstrate the use of the principle.)
+.Thoroughly explain these concepts. (This likely cannot be done in less than 100 words.)
+
+---------------------------------------------------------------------------------------------------
+Abstraction is a fundamental principle of object-oriented programming that involves hiding the 
+internal implementation details and exposing only the essential features of an object or system. 
+Abstraction allows programmers to work with a simplified model and focus on the core functionality.
+
+The beauty of abstraction is that it reduces the complexity of the system and improves the 
+maintainability of the code, since the internal details can change without affecting other parts 
+of the program that use that functionality.
+
+In my journal program, I implemented abstraction using classes that encapsulate the internal 
+details of operations. For example, in the Journal class, I used methods like AddEntry to add 
+entries to the journal, and SaveToFile to save the journal to a file, without exposing how the 
+entries are stored internally.
+Code example:
+
+       public void AddEntry(Entry entry)
+       {
+           entries.Add(entry);
+       }
+
+       public void SaveToFile(string filename)
+       {
+           using (StreamWriter writer = new StreamWriter(filename))
+           {
+               foreach (var entry in entries)
+               {
+                   writer.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
+               }
+           }
+       }
+
+In this code, the AddEntry method allows the user to add an entry without needing to know how 
+the entries list is handled internally. Also, SaveToFile hides the details of how entries are 
+converted to text for storage in a file.
+
+In short, abstraction is important for designing clean, maintainable programs. Thanks to it, you 
+can work with system components without worrying about their internal details, which encourages 
+flexible design.
+---------------------------------------------------------------------------------------------------
