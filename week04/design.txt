@@ -1,0 +1,173 @@
+Program Design - Week 4
+
+Program 1: Abstraction with YouTube Videos
+
+Description:
+This program will make a list of YouTube videos, allowing users to view details about the videos and manage the comments associated with each one.
+
+Classes and Responsibilities
+
+Class: Video
+Responsibility: Represents a video with its attributes and manages comments.
+Attributes:
+-title: string
+-author: string
+-length: int (in seconds)
+-comments: List<Comment>
+Methods:
+AddComment(comment: Comment): Adds a comment to the video.
+GetVideoDetails() -> string: Returns information about the video.
+GetCommentCount() -> int: Returns the number of comments.
+
+Class: Comment
+Responsibility: Represents a comment on a video.
+Attributes:
+-username: string
+-text: string`
+-Methods:
+-GetCommentDetails() -> string: Returns the comment information.
+
+Class Diagram
+
++------------------+
+| Video |
++------------------+
+| - title |
+| - author |
+| - length |
+| - comments |
++------------------+
+| + AddComment() |
+| + GetDetails() |
+| + GetCommentCount() |
++------------------+
+|
+| 1..*
+v
++------------------+
+| Comment |
++------------------+
+| - username |
+| - text |
++------------------+
+| + GetCommentDetails() |
++------------------+
+```
+
+Execution Flow
+1. Video and Comment objects are created.
+2. Comments are added to a video.
+3. Details of the video and number of comments are listed.
+
+---
+
+Program 2: Encapsulation with Online Orders
+
+Description
+This program will place online orders, including customers, products, and shipping addresses.
+
+Classes and Responsibilities
+
+Class: Address
+- Responsibility: Contains the address information for a customer.
+- Attributes:
+- street: string
+- city: string
+- state: string
+- country: string
+- Methods:
+- IsInUSA() -> bool: Checks if the address is in the US.
+- GetFullAddress() -> string`: Returns the full address.
+
+Class: Customer
+- Responsibility: Represents a customer with a name and address.
+- Attributes:
+- name: string
+- address: Address
+- Methods:
+- `LivesInUSA() -> bool: Determines if the customer is in the US.
+- `GetCustomerInfo() -> string: Returns customer details.
+
+Class: Product
+- Responsibility: Represents a product with its information and total cost.
+- Attributes:
+- name: string
+- productId: string
+- price: decimal
+- quantity: int
+- Methods:
+- GetTotalCost() -> decimal: Calculates the total cost of the product.
+- GetProductLabel() -> string: Returns a product label.
+
+Class: Order
+- Responsibility: Manages a list of products and a customer, calculates costs, and generates labels.
+- Attributes:
+- products: List<Product>
+- customer: Customer
+- Methods
+- AddProduct(product: Product): Adds a product to the order.
+- GetTotalCost() -> decimal: Calculates the total cost with shipping.
+- GetPackingLabel() -> string: Returns the packing label.
+- GetShippingLabel() -> string: Returns the shipping label.
+
+Class Diagram*
+```
++------------------+
+| Address |
++------------------+
+| - street |
+| -city |
+| - state |
+| -country |
++------------------+
+| + IsInUSA() |
+| + GetFullAddress() |
++------------------+
+ ^
+ |
+ |
++------------------+
+| Customer |
++------------------+
+| -name |
+| -address |
++------------------+
+| + LivesInUSA() |
+| + GetCustomerInfo() |
++------------------+
+ |
+ |
++------------------+
+| Order |
++------------------+
+| - products |
+| - customer |
++------------------+
+| + AddProduct() |
+| + GetTotalCost() |
+| + GetPackingLabel() |
+| + GetShippingLabel() |
++------------------+
+^
+|
++------------------+
+| Product |
++------------------+
+| - name |
+| - productId |
+| - price |
+| - quantity |
++------------------+
+| + GetTotalCost() |
+| + GetProductLabel() |
++------------------+
+```
+
+### **Execution Flow**
+1. Addresses and customers are created.
+2. Products are created and added to orders.
+3. Packing and shipping labels are generated.
+4. Total cost of the order is calculated and displayed.
+
+---
+This document provides a clear structure for both programs. 🚀
