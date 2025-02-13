@@ -1,0 +1,83 @@
+Inheritance is a very important principle of Object Oriented Programming (OOP) 
+that allows a class to inherit attributes and methods from another class. This 
+helps us a lot when it comes to reusing code and creating more organized class 
+hierarchies.
+
+One of the main benefits of inheritance is code reusability. Instead of writing 
+the same code multiple times in different classes, we can define it once in a 
+base class and then reuse it in multiple derived classes. This helps us save a
+lot of time and makes the code more efficient.
+
+A common use of inheritance is in developing applications with class hierarchies. 
+For example, in an employee management system, we might have an Employee class 
+with general attributes and methods, and then derived classes like Manager and 
+Engineer that inherit from Employee and can add specific functionality.
+
+Here are some examples of my project:
+-----------------------------------------------------------------------------------------------------------------
+-Base class (superclass)
+
+class Activity
+{
+    public int Duration { get; set; }
+
+    public virtual void ShowIntroduction()
+    {
+        Console.WriteLine("Welcome to the activity!");
+    }
+
+    public virtual void RunActivity()
+    {
+        Console.WriteLine("Starting the activity...");
+    }
+}
+
+-Derived class (subclass) that inherits from Activity
+class ListingActivity : Activity
+{
+    private List<string> prompts = new List<string>
+    {
+        "Who are people that you appreciate?",
+        "What are personal strengths of yours?",
+    };
+
+    public override void ShowIntroduction()
+    {
+        Console.WriteLine("Welcome to the Listing Activity");
+        Console.WriteLine("This activity will help you focus on the positive aspects of your life.");
+    }
+
+    public override void RunActivity()
+    {
+        Random random = new Random();
+        string prompt = prompts[random.Next(prompts.Count)];
+
+        Console.WriteLine($"--- {prompt} ---");
+        Console.WriteLine("You may begin in: ");
+        CountdownTimer(5);
+    }
+
+    private void CountdownTimer(int seconds)
+    {
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write($"\rYou may begin in: {i}\r");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine();
+    }
+}
+
+
+Code Explanation:
+1.Base class Activity: Defines general methods (ShowIntroduction() and RunActivity())
+and a Duration property.
+2.Derived class ListingActivity: Inherits from Activity, which means that ListingActivity
+has access to all methods and properties of Activity.
+3.Method overrides: ListingActivity redefines (override) the ShowIntroduction() and
+RunActivity() methods to suit its specific purpose.
+4.Code reuse: ListingActivity uses the structure and functionality of Activity without
+the need to repeat unnecessary code.
+
+In summary, inheritance is important and key in OOP that improves code reuse, organization,
+and scalability of programs.
